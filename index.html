@@ -1,95 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>For Gio 💖</title>
+<meta charset="UTF-8">
+<title>Valentine 💕</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 350px;
+  position: relative;
+}
 
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 22px;
-      text-align: center;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-      max-width: 330px;
-      animation: pop 1s ease;
-    }
+h1 {
+  color: #ff4d6d;
+  margin-bottom: 25px;
+}
 
-    @keyframes pop {
-      from { transform: scale(0.85); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
+button {
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
 
-    h1 {
-      color: #ff3366;
-      margin-bottom: 10px;
-    }
+.yes {
+  background: #ff4d6d;
+  color: white;
+}
 
-    p {
-      font-size: 16px;
-      color: #444;
-      margin: 10px 0;
-    }
-
-    .heart {
-      font-size: 55px;
-      animation: beat 1s infinite;
-      margin-bottom: 10px;
-    }
-
-    @keyframes beat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.25); }
-    }
-
-    button {
-      margin-top: 15px;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 25px;
-      background: #ff3366;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #e62e5c;
-    }
-
-    .from {
-      margin-top: 15px;
-      font-size: 14px;
-      color: #777;
-    }
-  </style>
+.no {
+  background: #ddd;
+  position: absolute;
+  left: 20px;
+  top: 120px;
+}
+</style>
 </head>
-
 <body>
-  <div class="card">
-    <div class="heart">❤️</div>
-    <h1>Gio 💕</h1>
-    <p>You make everything feel softer, brighter, and happier.</p>
-    <p>Will you be my Valentine? 💌</p>
 
-    <button onclick="alert('You just made my day, Gio 💖')">
-      Yes 💞
-    </button>
+<div class="card">
+  <h1>💖 gio love , will you be my Valentine? 💘</h1>
+  <button class="yes" onclick="yesClick()">Yes ❤️</button>
+  <button class="no" id="noBtn">No 😜</button>
+</div>
 
-    <div class="from">
-      — From Alice 🌹
-    </div>
+<script>
+const noBtn = document.getElementById("noBtn");
+const card = document.querySelector(".card");
+
+function randomMove() {
+  const maxX = card.clientWidth - noBtn.offsetWidth;
+  const maxY = card.clientHeight - noBtn.offsetHeight;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+// No button keeps moving
+setInterval(randomMove, 700);
+
+function yesClick() {
+  document.body.innerHTML = `
+  <div style="
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:#ff9a9e;
+    color:white;
+    text-align:center;
+    padding:20px;
+  ">
+    <h1>🥰 Yayyy Gio! I knew it 😍💖</h1>
+    <img src="https://media.giphy.com/media/3oriO0OEd9QDdIIg0/giphy.gif"
+         alt="Dancing girl"
+         style="width:250px; margin-top:20px; border-radius:20px;">
   </div>
+  `;
+}
+</script>
+
 </body>
 </html>
